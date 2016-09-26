@@ -4,3 +4,9 @@
 @include flag-icon(gb-sct);
 @include flag-icon(gb-wls);
 @include flag-icon(un);
+
+@each $currency, $country in $currency-country {
+  .currency-icon-#{$currency} {
+    @extend .flag-icon-#{$country};
+  }
+}
