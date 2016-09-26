@@ -1,26 +1,26 @@
 module.exports = (grunt)->
-  less = 'less'
+  sass = 'sass'
   TARGET_DIR = 'css'
 
   grunt.initConfig
-    less:
+    sass:
       flag:
-        src: 'less/flag-icon.less'
+        src: 'sass/flag-icon.scss'
         dest: 'css/flag-icon.css'
       docs:
-        src: 'assets/docs.less'
+        src: 'assets/docs.scss'
         dest: 'assets/docs.css'
 
     cssmin:
       flag:
-        src: 'css/flag-icon.css'
+        src: 'css/_flag-icon.scss'
         dest: 'css/flag-icon.min.css'
 
     watch:
       css:
         options:
           livereload: true
-        files: '**/*.less'
+        files: '**/*.scss'
         tasks: ['build']
 
       assets:
@@ -35,10 +35,10 @@ module.exports = (grunt)->
           keepalive: true
 
 
-    grunt.loadNpmTasks 'grunt-contrib-less'
+    grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-cssmin'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-connect'
 
-    grunt.registerTask 'build',   ['less', 'cssmin']
+    grunt.registerTask 'build',   ['sass', 'cssmin']
     grunt.registerTask 'default', ['build', 'watch']
